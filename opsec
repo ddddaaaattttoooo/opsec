@@ -1,0 +1,96 @@
+#!/bin/sh
+# opsec - become sinister
+# Works on any POSIX system (Linux, macOS, BSD, etc.)
+
+VERSION="1.0.0"
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+RESET='\033[0m'
+
+print_banner() {
+    printf "${RED}"
+    cat << 'EOF'
+
+  ▒█████   ██▓███    ██████ ▓█████  ▄████▄  
+ ▒██▒  ██▒▓██░  ██▒▒██    ▒ ▓█   ▀ ▒██▀ ▀█  
+ ▒██░  ██▒▓██░ ██▓▒░ ▓██▄   ▒███   ▒▓█    ▄ 
+ ▒██   ██░▒██▄█▓▒ ▒  ▒   ██▒▒▓█  ▄ ▒▓▓▄ ▄██▒
+ ░ ████▓▒░▒██▒ ░  ░▒██████▒▒░▒████▒▒ ▓███▀ ░
+ ░ ▒░▒░▒░ ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░░░ ▒░ ░░ ░▒ ▒  ░
+   ░ ▒ ▒░ ░▒ ░     ░ ░▒  ░ ░ ░ ░  ░  ░  ▒   
+ ░ ░ ░ ▒  ░░       ░  ░  ░     ░   ░        
+     ░ ░                  ░     ░  ░░ ░      
+                                  ░          
+EOF
+    printf "${RESET}"
+}
+
+if [ -n "$SUDO_USER" ]; then
+    REAL_HOME=$(eval echo "~$SUDO_USER")
+else
+    REAL_HOME="$HOME"
+fi
+STATEFILE="$REAL_HOME/.opsec_state"
+
+get_state() {
+    if [ -f "$STATEFILE" ]; then
+        cat "$STATEFILE"
+    else
+        printf "disabled"
+    fi
+}
+
+case "$1" in
+    enable)
+        if [ "$(get_state)" = "enabled" ]; then
+            printf "${GREEN}${BOLD}its already enabled and you're protected king, the larp never ends${RESET}\n"
+        else
+            print_banner
+            printf "${GREEN}${BOLD}Welcome to opsec brother.${RESET} ${CYAN}dont forget proton vpn with opera gx${RESET}\n"
+            printf "${GREEN}${BOLD}opsec enabled${RESET}, ${CYAN}time to be sinister and larp${RESET}\n"
+            printf "enabled" > "$STATEFILE"
+        fi
+        ;;
+    disable)
+        if [ "$(get_state)" = "disabled" ]; then
+            printf "${RED}${BOLD}its already disabled and you're exposed dumbass${RESET}\n"
+        else
+            print_banner
+            printf "${YELLOW}${BOLD}opsec disabled${RESET}, ${RED}you are now exposed. godspeed.${RESET}\n"
+            printf "disabled" > "$STATEFILE"
+        fi
+        ;;
+    status)
+        if [ "$(get_state)" = "enabled" ]; then
+            printf "${GREEN}${BOLD}opsec is enabled.${RESET} ${CYAN}you're protected king.${RESET}\n"
+        else
+            printf "${RED}${BOLD}opsec is disabled.${RESET} ${YELLOW}you're exposed out there.${RESET}\n"
+        fi
+        ;;
+    version|--version|-v)
+        printf "opsec v${VERSION}\n"
+        ;;
+    help|--help|-h)
+        printf "${BOLD}opsec${RESET} - become sinister\n\n"
+        printf "${BOLD}Usage:${RESET}\n"
+        printf "  opsec enable    Enable opsec mode\n"
+        printf "  opsec disable   Disable opsec mode\n"
+        printf "  opsec status    Check your opsec status\n"
+        printf "  opsec version   Show version\n"
+        printf "  opsec help      Show this help\n"
+        printf "\n${CYAN}Made by ddddaaaattttoooo${RESET}\n"
+        ;;
+    "")
+        print_banner
+        printf "Run ${BOLD}opsec enable${RESET} to get started.\n"
+        ;;
+    *)
+        printf "${RED}unknown command:${RESET} %s\n" "$1"
+        printf "Run ${BOLD}opsec help${RESET} for usage.\n"
+        exit 1
+        ;;
+esac
