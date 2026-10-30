@@ -7,7 +7,7 @@ Made by **ddddaaaattttoooo**
 > ### ⚠️ DISCLAIMER: THIS IS A JOKE / PARODY PROJECT ⚠️
 > **ALL OUTPUT, TEXT, AND MENTIONS OF "HACKING", "BACKDOORS", OR "EXPOSURE" ARE 100% FAKE, SATIRICAL, AND FOR COMEDIC PURPOSES ONLY.**
 >
-> This program is a harmless cosmetic terminal toy written in plain shell script. It performs **NO real hacking, NO network connections, NO system modifications, and contains NO actual malware or backdoors**. It just prints funny ASCII art and text to the terminal. Enjoy the larp.
+> **This script does not do anything to your system.** It is purely a funny visual terminal toy written in plain POSIX shell. It performs **NO real hacking, NO network connections, NO system modifications, and contains NO actual malware, exploits, or backdoors**. It does not run anything malicious or touch your system in any way — it literally just displays ASCII art, colorful text, and a humorous progress bar. Enjoy the larp.
 
 ## Install
 
