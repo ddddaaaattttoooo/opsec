@@ -63,7 +63,7 @@ run_hack() {
             sleep 2.0
         else
             printf "\r${RED}[%-20s] %3d%%${RESET}                                                                          " "$bar" "$pct"
-            sleep 0.06
+            sleep 0.12
         fi
         i=$((i + 1))
     done
