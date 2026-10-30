@@ -4,6 +4,11 @@ become sinister.
 
 Made by **ddddaaaattttoooo**
 
+> ### ⚠️ DISCLAIMER: THIS IS A JOKE / PARODY PROJECT ⚠️
+> **ALL OUTPUT, TEXT, AND MENTIONS OF "HACKING", "BACKDOORS", OR "EXPOSURE" ARE 100% FAKE, SATIRICAL, AND FOR COMEDIC PURPOSES ONLY.**
+>
+> This program is a harmless cosmetic terminal toy written in plain shell script. It performs **NO real hacking, NO network connections, NO system modifications, and contains NO actual malware or backdoors**. It just prints funny ASCII art and text to the terminal. Enjoy the larp.
+
 ## Install
 
 ### Linux / macOS (any distro)
