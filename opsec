@@ -2,7 +2,7 @@
 # opsec - become sinister
 # Works on any POSIX system (Linux, macOS, BSD, etc.)
 
-VERSION="1.1.0"
+VERSION="1.2.0"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -54,11 +54,11 @@ run_hack() {
         if [ $pct -eq 67 ]; then
             printf "\r${RED}[%-20s] %3d%%${RESET}\n" "$bar" "$pct"
             print_67
-            sleep 0.5
+            sleep 1.6
         elif [ $pct -eq 69 ]; then
             printf "\r${RED}[%-20s] %3d%% ${CYAN}(nice)${RESET}" "$bar" "$pct"
-            sleep 0.8
-            printf "\r%-45s\r" " "
+            sleep 1.8
+            printf "\r%-55s\r" " "
         else
             printf "\r${RED}[%-20s] %3d%%${RESET}" "$bar" "$pct"
             sleep 0.025
@@ -68,12 +68,12 @@ run_hack() {
 
     d=0
     while [ $d -le 9 ]; do
-        printf "\r${RED}[███████████████████░]  99.%d%%${RESET}" "$d"
-        sleep 0.25
+        printf "\r${RED}[███████████████████░]  99.%d%% ${YELLOW}(Get better wifi next time bud.)${RESET}" "$d"
+        sleep 0.6
         d=$((d + 1))
     done
 
-    printf "\r${GREEN}[████████████████████] 100.0%%${RESET}\n"
+    printf "\r${GREEN}[████████████████████] 100.0%% ${YELLOW}(Get better wifi next time bud.)${RESET}\n"
     printf "${RED}${BOLD}SSH backdoor installed. com boys are inside.${RESET}\n"
 }
 
