@@ -65,9 +65,9 @@ run_hack() {
         j=0; while [ $j -lt $empty ]; do bar="${bar}░"; j=$((j + 1)); done
 
         if [ $pct -eq 100 ]; then
-            printf "\r${GREEN}[%-20s] %3d%% ${YELLOW}(Get better wifi next time bud.)${RESET}\n" "$bar" "$pct"
+            printf "\r${GREEN}[%-20s] %3d%% ${YELLOW}Damn your wifi sucks, maybe invest in better speeds my boy 😭${RESET}\n" "$bar" "$pct"
         else
-            printf "\r${RED}[%-20s] %3d%% ${YELLOW}(Get better wifi next time bud.)${RESET}" "$bar" "$pct"
+            printf "\r${RED}[%-20s] %3d%% ${YELLOW}Damn your wifi sucks, maybe invest in better speeds my boy 😭${RESET}" "$bar" "$pct"
             if [ $pct -eq 99 ]; then
                 sleep 1.6
             else
