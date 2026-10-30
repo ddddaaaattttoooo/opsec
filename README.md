@@ -69,16 +69,11 @@ $ opsec disable
 ...
 opsec disabled, com boys hacking you through SSH now.
 
-[█████████████░░░░░░░]  67%
-   ██████   ████████
-  ███░░░░      ███  
-  ██████      ███   
-  ███░░██    ███    
-  ░█████    ███     
+[█████████████░░░░░░░]  67% [ 67 ]
 [█████████████░░░░░░░]  69% (nice)
 ...
-[███████████████████░]  99.9% (Get better wifi next time bud.)
-[████████████████████] 100.0% (Get better wifi next time bud.)
+[███████████████████░]  97% (Get better wifi next time bud.)
+[████████████████████] 100% (Get better wifi next time bud.)
 SSH backdoor installed. com boys are inside.
 
 $ opsec disable

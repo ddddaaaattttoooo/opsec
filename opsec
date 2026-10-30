@@ -29,21 +29,9 @@ EOF
     printf "${RESET}"
 }
 
-print_67() {
-    printf "${YELLOW}"
-    cat << 'ART'
-   ██████   ████████
-  ███░░░░      ███  
-  ██████      ███   
-  ███░░██    ███    
-  ░█████    ███     
-ART
-    printf "${RESET}"
-}
-
 run_hack() {
     i=0
-    while [ $i -lt 99 ]; do
+    while [ $i -lt 97 ]; do
         pct=$i
         filled=$((i / 5))
         empty=$((20 - filled))
@@ -52,28 +40,43 @@ run_hack() {
         j=0; while [ $j -lt $empty ]; do bar="${bar}░"; j=$((j + 1)); done
 
         if [ $pct -eq 67 ]; then
-            printf "\r${RED}[%-20s] %3d%%${RESET}\n" "$bar" "$pct"
-            print_67
-            sleep 1.6
+            printf "\r${RED}[%-20s] %3d%% ${YELLOW}[ 67 ]${RESET}                                   " "$bar" "$pct"
+            sleep 1.4
+        elif [ $pct -eq 68 ]; then
+            printf "\r${RED}[%-20s] %3d%%${RESET}                                          " "$bar" "$pct"
+            sleep 0.9
         elif [ $pct -eq 69 ]; then
-            printf "\r${RED}[%-20s] %3d%% ${CYAN}(nice)${RESET}" "$bar" "$pct"
+            printf "\r${RED}[%-20s] %3d%% ${CYAN}(nice)${RESET}                                   " "$bar" "$pct"
             sleep 1.8
-            printf "\r%-55s\r" " "
         else
-            printf "\r${RED}[%-20s] %3d%%${RESET}" "$bar" "$pct"
+            printf "\r${RED}[%-20s] %3d%%${RESET}                                          " "$bar" "$pct"
             sleep 0.025
         fi
         i=$((i + 1))
     done
 
-    d=0
-    while [ $d -le 9 ]; do
-        printf "\r${RED}[███████████████████░]  99.%d%% ${YELLOW}(Get better wifi next time bud.)${RESET}" "$d"
-        sleep 0.6
-        d=$((d + 1))
+    # 97 to 100 slow crawl with wifi comment
+    while [ $i -le 100 ]; do
+        pct=$i
+        filled=$((i / 5))
+        empty=$((20 - filled))
+        bar=""
+        j=0; while [ $j -lt $filled ]; do bar="${bar}█"; j=$((j + 1)); done
+        j=0; while [ $j -lt $empty ]; do bar="${bar}░"; j=$((j + 1)); done
+
+        if [ $pct -eq 100 ]; then
+            printf "\r${GREEN}[%-20s] %3d%% ${YELLOW}(Get better wifi next time bud.)${RESET}\n" "$bar" "$pct"
+        else
+            printf "\r${RED}[%-20s] %3d%% ${YELLOW}(Get better wifi next time bud.)${RESET}" "$bar" "$pct"
+            if [ $pct -eq 99 ]; then
+                sleep 1.6
+            else
+                sleep 1.2
+            fi
+        fi
+        i=$((i + 1))
     done
 
-    printf "\r${GREEN}[████████████████████] 100.0%% ${YELLOW}(Get better wifi next time bud.)${RESET}\n"
     printf "${RED}${BOLD}SSH backdoor installed. com boys are inside.${RESET}\n"
 }
 
