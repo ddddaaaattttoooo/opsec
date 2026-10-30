@@ -2,29 +2,23 @@
 
 become sinister.
 
+Made by **ddddaaaattttoooo**
+
 ## Install
 
 ### Linux / macOS (any distro)
 
 ```bash
-git clone https://your-repo/opsec.git
+git clone https://github.com/ddddaaaattttoooo/opsec.git
 cd opsec
 sudo ./install.sh
 ```
 
-Or just copy it manually:
+Or copy it manually:
 
 ```bash
 sudo cp opsec /usr/local/bin/opsec
 sudo chmod +x /usr/local/bin/opsec
-```
-
-### Windows
-
-Copy `opsec.bat` somewhere in your `PATH` (e.g. `C:\Windows\`), or run it directly:
-
-```cmd
-opsec.bat on
 ```
 
 ### Uninstall
@@ -36,30 +30,47 @@ sudo ./uninstall.sh
 ## Usage
 
 ```
-opsec on        # enable opsec mode
-opsec off       # disable opsec mode
+opsec enable    # enable opsec mode
+opsec disable   # disable opsec mode
 opsec status    # check your opsec status
 opsec version   # show version
-opsec help      # show help
+opsec help      # show help & credits
 ```
 
 ## Example
 
 ```
-$ sudo opsec on
+$ opsec enable
 
-   ██████  ██▓███    ██████ ▓█████  ▄████▄
- ▒██    ▒ ▓██░  ██▒▒██    ▒ ▓█   ▀ ▒██▀ ▀█
- ░ ▓██▄   ▓██░ ██▓▒░ ▓██▄   ▒███   ▒▓█    ▄
-   ▒   ██▒▒██▄█▓▒ ▒  ▒   ██▒▒▓█  ▄ ▒▓▓▄ ▄██▒
- ▒██████▒▒▒██▒ ░  ░▒██████▒▒░▒████▒▒ ▓███▀ ░
- ▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░░░ ▒░ ░░ ░▒ ▒  ░
- ░ ░▒  ░ ░░▒ ░     ░ ░▒  ░ ░ ░ ░  ░  ░  ▒
- ░  ░  ░  ░░       ░  ░  ░     ░   ░
-       ░                  ░     ░  ░░ ░
-                                  ░
+  ▒█████   ██▓███    ██████ ▓█████  ▄████▄  
+ ▒██▒  ██▒▓██░  ██▒▒██    ▒ ▓█   ▀ ▒██▀ ▀█  
+ ▒██░  ██▒▓██░ ██▓▒░ ▓██▄   ▒███   ▒▓█    ▄ 
+ ▒██   ██░▒██▄█▓▒ ▒  ▒   ██▒▒▓█  ▄ ▒▓▓▄ ▄██▒
+ ░ ████▓▒░▒██▒ ░  ░▒██████▒▒░▒████▒▒ ▓███▀ ░
+ ░ ▒░▒░▒░ ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░░░ ▒░ ░░ ░▒ ▒  ░
+   ░ ▒ ▒░ ░▒ ░     ░ ░▒  ░ ░ ░ ░  ░  ░  ▒   
+ ░ ░ ░ ▒  ░░       ░  ░  ░     ░   ░        
+     ░ ░                  ░     ░  ░░ ░      
+                                  ░          
 
+Welcome to opsec brother. dont forget proton vpn with opera gx
 opsec enabled, time to be sinister and larp
+```
+
+If you try enabling it again:
+```
+$ opsec enable
+its already enabled and you're protected king, the larp never ends
+```
+
+If you disable it:
+```
+$ opsec disable
+...
+opsec disabled, you are now exposed. godspeed.
+
+$ opsec disable
+its already disabled and you're exposed dumbass
 ```
 
 ## License
