@@ -77,7 +77,8 @@ opsec disabled, com boys hacking you through SSH now.
   ░█████    ███     
 [█████████████░░░░░░░]  69% (nice)
 ...
-[███████████████████░]  97% Damn your wifi sucks, maybe invest in better speeds my boy 😭
+[███████████████████░]  95% Slow speeds, lets pray
+[███████████████████░]  97% damn bro how bad is your wifi
 [████████████████████] 100% Damn your wifi sucks, maybe invest in better speeds my boy 😭
 SSH backdoor installed. com boys are inside.
 

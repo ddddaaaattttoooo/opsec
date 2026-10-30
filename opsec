@@ -43,7 +43,7 @@ ART
 
 run_hack() {
     i=0
-    while [ $i -lt 97 ]; do
+    while [ $i -lt 95 ]; do
         pct=$i
         filled=$((i / 5))
         empty=$((20 - filled))
@@ -56,19 +56,19 @@ run_hack() {
             print_67
             sleep 2.0
         elif [ $pct -eq 68 ]; then
-            printf "\r${RED}[%-20s] %3d%%${RESET}                                                                    " "$bar" "$pct"
+            printf "\r${RED}[%-20s] %3d%%${RESET}                                                                          " "$bar" "$pct"
             sleep 1.2
         elif [ $pct -eq 69 ]; then
-            printf "\r${RED}[%-20s] %3d%% ${CYAN}(nice)${RESET}                                                               " "$bar" "$pct"
+            printf "\r${RED}[%-20s] %3d%% ${CYAN}(nice)${RESET}                                                                     " "$bar" "$pct"
             sleep 2.0
         else
-            printf "\r${RED}[%-20s] %3d%%${RESET}                                                                    " "$bar" "$pct"
+            printf "\r${RED}[%-20s] %3d%%${RESET}                                                                          " "$bar" "$pct"
             sleep 0.06
         fi
         i=$((i + 1))
     done
 
-    # 97 to 100 slow crawl with wifi comment
+    # 95 to 100 slow crawl with escalating wifi commentary
     while [ $i -le 100 ]; do
         pct=$i
         filled=$((i / 5))
@@ -77,15 +77,22 @@ run_hack() {
         j=0; while [ $j -lt $filled ]; do bar="${bar}█"; j=$((j + 1)); done
         j=0; while [ $j -lt $empty ]; do bar="${bar}░"; j=$((j + 1)); done
 
-        if [ $pct -eq 100 ]; then
-            printf "\r${GREEN}[%-20s] %3d%% ${YELLOW}Damn your wifi sucks, maybe invest in better speeds my boy 😭${RESET}\n" "$bar" "$pct"
+        if [ $pct -lt 97 ]; then
+            comment="Slow speeds, lets pray"
+            delay=1.2
+        elif [ $pct -lt 99 ]; then
+            comment="damn bro how bad is your wifi"
+            delay=1.4
         else
-            printf "\r${RED}[%-20s] %3d%% ${YELLOW}Damn your wifi sucks, maybe invest in better speeds my boy 😭${RESET}" "$bar" "$pct"
-            if [ $pct -eq 99 ]; then
-                sleep 2.0
-            else
-                sleep 1.5
-            fi
+            comment="Damn your wifi sucks, maybe invest in better speeds my boy 😭"
+            delay=2.0
+        fi
+
+        if [ $pct -eq 100 ]; then
+            printf "\r${GREEN}[%-20s] %3d%% ${YELLOW}%s${RESET}   \n" "$bar" "$pct" "$comment"
+        else
+            printf "\r${RED}[%-20s] %3d%% ${YELLOW}%s${RESET}   " "$bar" "$pct" "$comment"
+            sleep "$delay"
         fi
         i=$((i + 1))
     done
