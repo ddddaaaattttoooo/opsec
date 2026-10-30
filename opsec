@@ -2,7 +2,7 @@
 # opsec - become sinister
 # Works on any POSIX system (Linux, macOS, BSD, etc.)
 
-VERSION="1.2.0"
+VERSION="1.2.1"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
