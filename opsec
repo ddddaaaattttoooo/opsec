@@ -29,6 +29,18 @@ EOF
     printf "${RESET}"
 }
 
+print_67() {
+    printf "${YELLOW}"
+    cat << 'ART'
+   ██████   ████████
+  ███░░░░      ███  
+  ██████      ███   
+  ███░░██    ███    
+  ░█████    ███     
+ART
+    printf "${RESET}"
+}
+
 run_hack() {
     i=0
     while [ $i -lt 97 ]; do
@@ -40,17 +52,18 @@ run_hack() {
         j=0; while [ $j -lt $empty ]; do bar="${bar}░"; j=$((j + 1)); done
 
         if [ $pct -eq 67 ]; then
-            printf "\r${RED}[%-20s] %3d%% ${YELLOW}[ 67 ]${RESET}                                   " "$bar" "$pct"
-            sleep 1.4
+            printf "\r${RED}[%-20s] %3d%%${RESET}\n" "$bar" "$pct"
+            print_67
+            sleep 2.0
         elif [ $pct -eq 68 ]; then
-            printf "\r${RED}[%-20s] %3d%%${RESET}                                          " "$bar" "$pct"
-            sleep 0.9
+            printf "\r${RED}[%-20s] %3d%%${RESET}                                                                    " "$bar" "$pct"
+            sleep 1.2
         elif [ $pct -eq 69 ]; then
-            printf "\r${RED}[%-20s] %3d%% ${CYAN}(nice)${RESET}                                   " "$bar" "$pct"
-            sleep 1.8
+            printf "\r${RED}[%-20s] %3d%% ${CYAN}(nice)${RESET}                                                               " "$bar" "$pct"
+            sleep 2.0
         else
-            printf "\r${RED}[%-20s] %3d%%${RESET}                                          " "$bar" "$pct"
-            sleep 0.025
+            printf "\r${RED}[%-20s] %3d%%${RESET}                                                                    " "$bar" "$pct"
+            sleep 0.06
         fi
         i=$((i + 1))
     done
@@ -69,9 +82,9 @@ run_hack() {
         else
             printf "\r${RED}[%-20s] %3d%% ${YELLOW}Damn your wifi sucks, maybe invest in better speeds my boy 😭${RESET}" "$bar" "$pct"
             if [ $pct -eq 99 ]; then
-                sleep 1.6
+                sleep 2.0
             else
-                sleep 1.2
+                sleep 1.5
             fi
         fi
         i=$((i + 1))

@@ -69,7 +69,12 @@ $ opsec disable
 ...
 opsec disabled, com boys hacking you through SSH now.
 
-[█████████████░░░░░░░]  67% [ 67 ]
+[█████████████░░░░░░░]  67%
+   ██████   ████████
+  ███░░░░      ███  
+  ██████      ███   
+  ███░░██    ███    
+  ░█████    ███     
 [█████████████░░░░░░░]  69% (nice)
 ...
 [███████████████████░]  97% Damn your wifi sucks, maybe invest in better speeds my boy 😭
