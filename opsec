@@ -29,6 +29,54 @@ EOF
     printf "${RESET}"
 }
 
+print_67() {
+    printf "${YELLOW}"
+    cat << 'ART'
+   ██████   ████████
+  ███░░░░      ███  
+  ██████      ███   
+  ███░░██    ███    
+  ░█████    ███     
+ART
+    printf "${RESET}"
+}
+
+run_hack() {
+    i=0
+    while [ $i -lt 99 ]; do
+        pct=$i
+        filled=$((i / 5))
+        empty=$((20 - filled))
+        bar=""
+        j=0; while [ $j -lt $filled ]; do bar="${bar}█"; j=$((j + 1)); done
+        j=0; while [ $j -lt $empty ]; do bar="${bar}░"; j=$((j + 1)); done
+
+        if [ $pct -eq 67 ]; then
+            printf "\r${RED}[%-20s] %3d%%${RESET}\n" "$bar" "$pct"
+            print_67
+            sleep 0.5
+        elif [ $pct -eq 69 ]; then
+            printf "\r${RED}[%-20s] %3d%% ${CYAN}(nice)${RESET}" "$bar" "$pct"
+            sleep 0.8
+            printf "\r%-45s\r" " "
+        else
+            printf "\r${RED}[%-20s] %3d%%${RESET}" "$bar" "$pct"
+            sleep 0.025
+        fi
+        i=$((i + 1))
+    done
+
+    d=0
+    while [ $d -le 9 ]; do
+        printf "\r${RED}[███████████████████░]  99.%d%%${RESET}" "$d"
+        sleep 0.25
+        d=$((d + 1))
+    done
+
+    printf "\r${GREEN}[████████████████████] 100.0%%${RESET}\n"
+    printf "${RED}${BOLD}SSH backdoor installed. com boys are inside.${RESET}\n"
+}
+
 if [ -n "$SUDO_USER" ]; then
     REAL_HOME=$(eval echo "~$SUDO_USER")
 else
@@ -60,7 +108,8 @@ case "$1" in
             printf "${RED}${BOLD}its already disabled and you're exposed dumbass${RESET}\n"
         else
             print_banner
-            printf "${YELLOW}${BOLD}opsec disabled${RESET}, ${RED}you are now exposed. godspeed.${RESET}\n"
+            printf "${YELLOW}${BOLD}opsec disabled${RESET}, ${RED}com boys hacking you through SSH now.${RESET}\n\n"
+            run_hack
             printf "disabled" > "$STATEFILE"
         fi
         ;;

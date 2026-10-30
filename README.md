@@ -67,7 +67,19 @@ If you disable it:
 ```
 $ opsec disable
 ...
-opsec disabled, you are now exposed. godspeed.
+opsec disabled, com boys hacking you through SSH now.
+
+[█████████████░░░░░░░]  67%
+   ██████   ████████
+  ███░░░░      ███  
+  ██████      ███   
+  ███░░██    ███    
+  ░█████    ███     
+[█████████████░░░░░░░]  69% (nice)
+...
+[███████████████████░]  99.9%
+[████████████████████] 100.0%
+SSH backdoor installed. com boys are inside.
 
 $ opsec disable
 its already disabled and you're exposed dumbass
