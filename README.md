@@ -4,6 +4,19 @@ become sinister.
 
 Made by **ddddaaaattttoooo**
 
+```
+  ▒█████   ██▓███    ██████ ▓█████  ▄████▄  
+ ▒██▒  ██▒▓██░  ██▒▒██    ▒ ▓█   ▀ ▒██▀ ▀█  
+ ▒██░  ██▒▓██░ ██▓▒░ ▓██▄   ▒███   ▒▓█    ▄ 
+ ▒██   ██░▒██▄█▓▒ ▒  ▒   ██▒▒▓█  ▄ ▒▓▓▄ ▄██▒
+ ░ ████▓▒░▒██▒ ░  ░▒██████▒▒░▒████▒▒ ▓███▀ ░
+ ░ ▒░▒░▒░ ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░░░ ▒░ ░░ ░▒ ▒  ░
+   ░ ▒ ▒░ ░▒ ░     ░ ░▒  ░ ░ ░ ░  ░  ░  ▒   
+ ░ ░ ░ ▒  ░░       ░  ░  ░     ░   ░        
+     ░ ░                  ░     ░  ░░ ░      
+                                  ░          
+```
+
 > ### 🚨 DISCLAIMER: 100% PARODY & JOKE SCRIPT, MADE FOR PEOPLE TO HAVE FUN AND SHOW OFF THEIR DISTROS/SYSTEMS 🚨
 >
 > **THIS ENTIRE PROJECT IS A PARODY AND A JOKE SCRIPT CREATED SOLELY FOR PEOPLE TO "LARP".**
@@ -49,31 +62,6 @@ opsec help      # show help & credits
 
 ## Example
 
-```
-$ opsec enable
-
-  ▒█████   ██▓███    ██████ ▓█████  ▄████▄  
- ▒██▒  ██▒▓██░  ██▒▒██    ▒ ▓█   ▀ ▒██▀ ▀█  
- ▒██░  ██▒▓██░ ██▓▒░ ▓██▄   ▒███   ▒▓█    ▄ 
- ▒██   ██░▒██▄█▓▒ ▒  ▒   ██▒▒▓█  ▄ ▒▓▓▄ ▄██▒
- ░ ████▓▒░▒██▒ ░  ░▒██████▒▒░▒████▒▒ ▓███▀ ░
- ░ ▒░▒░▒░ ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░░░ ▒░ ░░ ░▒ ▒  ░
-   ░ ▒ ▒░ ░▒ ░     ░ ░▒  ░ ░ ░ ░  ░  ░  ▒   
- ░ ░ ░ ▒  ░░       ░  ░  ░     ░   ░        
-     ░ ░                  ░     ░  ░░ ░      
-                                  ░          
-
-Welcome to opsec brother. dont forget proton vpn with opera gx
-opsec enabled, time to be sinister and larp
-```
-
-If you try enabling it again:
-```
-$ opsec enable
-its already enabled and you're protected king, the larp never ends
-```
-
-If you disable it:
 ```
 $ opsec disable
 ...
