@@ -19,7 +19,7 @@ Made by **ddddaaaattttoooo**
 ### Linux / macOS (any distro)
 
 ```bash
-git clone https://codeberg.org/ddddaaaattttoooo/opsec.git
+git clone https://gitlab.com/ddddaaaattttoooo/opsec.git
 cd opsec
 sudo ./install.sh
 ```
