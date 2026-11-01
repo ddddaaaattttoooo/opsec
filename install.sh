@@ -1,5 +1,5 @@
 #!/bin/sh
-# opsec installer
+# opsec installer v1.2.2
 # Installs opsec to /usr/local/bin (Linux/macOS)
 
 set -e
