@@ -4,10 +4,15 @@ become sinister.
 
 Made by **ddddaaaattttoooo**
 
-> ### ⚠️ DISCLAIMER: THIS IS A JOKE / PARODY PROJECT ⚠️
-> **ALL OUTPUT, TEXT, AND MENTIONS OF "HACKING", "BACKDOORS", OR "EXPOSURE" ARE 100% FAKE, SATIRICAL, AND FOR COMEDIC PURPOSES ONLY.**
+> ### 🚨 DISCLAIMER: 100% PARODY & JOKE SCRIPT 🚨
 >
-> **This script does not do anything to your system.** It is purely a funny visual terminal toy written in plain POSIX shell. It performs **NO real hacking, NO network connections, NO system modifications, and contains NO actual malware, exploits, or backdoors**. It does not run anything malicious or touch your system in any way — it literally just displays ASCII art, colorful text, and a humorous progress bar. Enjoy the larp.
+> **THIS ENTIRE PROJECT IS A PARODY AND A JOKE SCRIPT CREATED SOLELY FOR PEOPLE TO "LARP".**
+>
+> - **Nothing is actually being run on your system.**
+> - **NO backdoors are being installed.**
+> - **Nothing is actually being enabled, disabled, modified, or protected on your system or network.**
+> - Mentions of "SSH backdoor installed", "hacking", "backdoors", "com boys", or "protection" are **100% fake visual jokes and harmless text strings.**
+> - This script is purely a cosmetic terminal toy written in plain POSIX shell. It touches zero system settings, installs zero background services, makes zero network connections, and contains zero exploits or malware. Enjoy the larp!
 
 ## Install
 
