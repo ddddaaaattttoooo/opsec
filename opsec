@@ -2,18 +2,58 @@
 # opsec - become sinister
 # Works on any POSIX system (Linux, macOS, BSD, etc.)
 
-VERSION="1.2.1"
+VERSION="1.2.2"
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-CYAN='\033[0;36m'
-BOLD='\033[1m'
-RESET='\033[0m'
+ESC=$(printf '\033')
+RED="${ESC}[0;31m"
+GREEN="${ESC}[0;32m"
+YELLOW="${ESC}[1;33m"
+CYAN="${ESC}[0;36m"
+BOLD="${ESC}[1m"
+RESET="${ESC}[0m"
+
+typewriter() {
+    text="$1"
+    delay="${2:-0.018}"
+    if command -v python3 >/dev/null 2>&1; then
+        python3 -c '
+import sys, time, re
+text = sys.argv[1].replace("\\n", "\n").replace("\\t", "\t")
+delay = float(sys.argv[2])
+pattern = re.compile(r"(\x1b\[[0-9;]*[a-zA-Z]|\r|\n|.)")
+for token in pattern.findall(text):
+    sys.stdout.write(token)
+    sys.stdout.flush()
+    if not (token.startswith("\x1b") or token in ("\r", "\n")):
+        time.sleep(delay)
+sys.stdout.write("\n")
+sys.stdout.flush()
+' "$text" "$delay"
+    elif command -v perl >/dev/null 2>&1; then
+        perl -MTime::HiRes=usleep -e '
+use strict;
+my $text = $ARGV[0];
+$text =~ s/\\n/\n/g;
+$text =~ s/\\t/\t/g;
+my $delay = ($ARGV[1] || 0.018) * 1_000_000;
+while ($text =~ /(\e\[[0-9;]*[a-zA-Z]|\r|\n|.)/gs) {
+    print $1;
+    select()->flush();
+    usleep($delay) unless ($1 =~ /^\e/ || $1 eq "\n" || $1 eq "\r");
+}
+print "\n";
+' "$text" "$delay"
+    else
+        printf "%b\n" "$text"
+    fi
+}
 
 print_banner() {
     printf "${RED}"
-    cat << 'EOF'
+    while IFS= read -r line; do
+        printf "%s\n" "$line"
+        sleep 0.08
+    done << 'EOF'
 
   ▒█████   ██▓███    ██████ ▓█████  ▄████▄  
  ▒██▒  ██▒▓██░  ██▒▒██    ▒ ▓█   ▀ ▒██▀ ▀█  
@@ -97,7 +137,7 @@ run_hack() {
         i=$((i + 1))
     done
 
-    printf "${RED}${BOLD}SSH backdoor installed. com boys are inside.${RESET}\n"
+    typewriter "${RED}${BOLD}SSH backdoor installed. com boys are inside.${RESET}"
 }
 
 if [ -n "$SUDO_USER" ]; then
@@ -117,30 +157,31 @@ get_state() {
 
 case "$1" in
     enable)
+        print_banner
         if [ "$(get_state)" = "enabled" ]; then
-            printf "${GREEN}${BOLD}its already enabled and you're protected king, the larp never ends${RESET}\n"
+            typewriter "${GREEN}${BOLD}its already enabled and you're protected king, the larp never ends${RESET}"
         else
-            print_banner
-            printf "${GREEN}${BOLD}Welcome to opsec brother.${RESET} ${CYAN}dont forget proton vpn with opera gx${RESET}\n"
-            printf "${GREEN}${BOLD}opsec enabled${RESET}, ${CYAN}time to be sinister and larp${RESET}\n"
+            typewriter "${GREEN}${BOLD}Welcome to opsec brother.${RESET} ${CYAN}dont forget proton vpn with opera gx${RESET}"
+            typewriter "${GREEN}${BOLD}opsec enabled${RESET}, ${CYAN}time to be sinister and larp${RESET}"
             printf "enabled" > "$STATEFILE"
         fi
         ;;
     disable)
+        print_banner
         if [ "$(get_state)" = "disabled" ]; then
-            printf "${RED}${BOLD}its already disabled and you're exposed dumbass${RESET}\n"
+            typewriter "${RED}${BOLD}its already disabled and you're exposed dumbass${RESET}"
         else
-            print_banner
-            printf "${YELLOW}${BOLD}opsec disabled${RESET}, ${RED}com boys hacking you through SSH now.${RESET}\n\n"
+            typewriter "${YELLOW}${BOLD}opsec disabled${RESET}, ${RED}com boys hacking you through SSH now.${RESET}\n"
             run_hack
             printf "disabled" > "$STATEFILE"
         fi
         ;;
     status)
+        print_banner
         if [ "$(get_state)" = "enabled" ]; then
-            printf "${GREEN}${BOLD}opsec is enabled.${RESET} ${CYAN}you're protected king.${RESET}\n"
+            typewriter "${GREEN}${BOLD}opsec is enabled.${RESET} ${CYAN}you're protected king. =)${RESET}"
         else
-            printf "${RED}${BOLD}opsec is disabled.${RESET} ${YELLOW}you're exposed out there.${RESET}\n"
+            typewriter "${RED}${BOLD}opsec is disabled.${RESET} ${YELLOW}you're exposed out there. =)${RESET}"
         fi
         ;;
     version|--version|-v)
@@ -158,7 +199,7 @@ case "$1" in
         ;;
     "")
         print_banner
-        printf "Run ${BOLD}opsec enable${RESET} to get started.\n"
+        typewriter "Run ${BOLD}opsec enable${RESET} to get started."
         ;;
     *)
         printf "${RED}unknown command:${RESET} %s\n" "$1"
