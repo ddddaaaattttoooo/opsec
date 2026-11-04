@@ -1,3 +1,6 @@
+**Since GitHub banned me for no reason and won't unsuspend my account, This repo will be on GitLab.**
+**Want to give me ideas for my next project? Add me on Discord! bl0odsipper**
+
 # Opsec (sudo apt install opsec / sudo pacman -S opsec)
 
 become sinister.
