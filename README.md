@@ -1,4 +1,5 @@
-**Since GitHub banned me for no reason and won't unsuspend my account, This repo will be on GitLab.**
+**Repo is back on GitHub! Enjoy Larping.**
+**This is all a parody. Nothing is being installed — it's just text being pasted in your shell.**
 **Want to give me ideas for my next project? Add me on Discord! bl0odsipper**
 
 # Opsec (sudo apt install opsec / sudo pacman -S opsec)
@@ -24,7 +25,7 @@ Made by **ddddaaaattttoooo**
 >
 > **THIS ENTIRE PROJECT IS A PARODY AND A JOKE SCRIPT CREATED SOLELY FOR PEOPLE TO "LARP".**
 >
-> - Nothing is actually being ran on your system.
+> - Nothing is actually being installed or ran on your system.
 > - NO backdoors are being installed.
 > - Nothing is actually being enabled, disabled, modified, or protected on your system or network.
 > - Mentions of "SSH backdoor installed", "hacking", "backdoors", "com boys", or "protection" are 100% fake visual jokes and harmless text strings.
@@ -35,7 +36,7 @@ Made by **ddddaaaattttoooo**
 ### Linux / macOS (any distro)
 
 ```bash
-git clone https://gitlab.com/ddddaaaattttoooo/opsec.git
+git clone https://github.com/ddddaaaattttoooo/opsec.git
 cd opsec
 sudo ./install.sh
 ```
@@ -56,8 +57,9 @@ sudo ./uninstall.sh
 ## Usage
 
 ```bash
-opsec enable    # enable opsec mode
-opsec disable   # disable opsec mode
+opsec install   # install opsec
+opsec enable    # enable opsec
+opsec disable   # disable opsec
 opsec status    # check your opsec status
 opsec version   # show version
 opsec help      # show help & credits

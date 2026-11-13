@@ -1,5 +1,5 @@
 #!/bin/sh
-# opsec installer v1.2.2
+# opsec installer v1.2.5
 # Installs opsec to /usr/local/bin (Linux/macOS)
 
 set -e
@@ -14,4 +14,4 @@ fi
 echo "Installing opsec to ${INSTALL_DIR}..."
 cp opsec "${INSTALL_DIR}/opsec"
 chmod 755 "${INSTALL_DIR}/opsec"
-echo "Done! Run 'opsec enable' to get started."
+echo "Done! Run 'opsec install' to get started."

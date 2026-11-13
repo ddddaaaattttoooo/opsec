@@ -2,7 +2,7 @@
 # opsec - become sinister
 # Works on any POSIX system (Linux, macOS, BSD, etc.)
 
-VERSION="1.2.2"
+VERSION="1.2.5"
 
 ESC=$(printf '\033')
 RED="${ESC}[0;31m"
@@ -140,12 +140,45 @@ run_hack() {
     typewriter "${RED}${BOLD}SSH backdoor installed. com boys are inside.${RESET}"
 }
 
+run_install() {
+    i=0
+    while [ $i -le 100 ]; do
+        pct=$i
+        filled=$((i / 5))
+        empty=$((20 - filled))
+        bar=""
+        j=0; while [ $j -lt $filled ]; do bar="${bar}█"; j=$((j + 1)); done
+        j=0; while [ $j -lt $empty ]; do bar="${bar}░"; j=$((j + 1)); done
+
+        case $pct in
+            10) msg="Downloading opsec..." ;;
+            30) msg="Installing dependencies..." ;;
+            50) msg="Applying 1337 patches..." ;;
+            70) msg="Configuring firewall..." ;;
+            90) msg="Finalizing installation..." ;;
+            *) msg="" ;;
+        esac
+
+        if [ -n "$msg" ]; then
+            printf "\r${CYAN}[%-20s] %3d%% ${YELLOW}%s${RESET}   \n" "$bar" "$pct" "$msg"
+            sleep 1.2
+        elif [ $pct -eq 100 ]; then
+            printf "\r${GREEN}[%-20s] %3d%%${RESET}   \n" "$bar" "$pct"
+        else
+            printf "\r${CYAN}[%-20s] %3d%%${RESET}   " "$bar" "$pct"
+            sleep 0.08
+        fi
+        i=$((i + 1))
+    done
+}
+
 if [ -n "$SUDO_USER" ]; then
     REAL_HOME=$(eval echo "~$SUDO_USER")
 else
     REAL_HOME="$HOME"
 fi
 STATEFILE="$REAL_HOME/.opsec_state"
+INSTALLFILE="$REAL_HOME/.opsec_installed"
 
 get_state() {
     if [ -f "$STATEFILE" ]; then
@@ -155,8 +188,28 @@ get_state() {
     fi
 }
 
+require_install() {
+    if [ ! -f "$INSTALLFILE" ]; then
+        typewriter "${RED}${BOLD}You need to install opsec first!${RESET} ${YELLOW}Run 'opsec install'.${RESET}"
+        exit 1
+    fi
+}
+
 case "$1" in
+    install)
+        if [ -f "$INSTALLFILE" ]; then
+            typewriter "${YELLOW}${BOLD}Silly person, you already have Opsec installed!${RESET}"
+        else
+            typewriter "${CYAN}${BOLD}Install True Opsec ${ESC}[1;97mone time${RESET}"
+            run_install
+            print_banner
+            typewriter "${GREEN}${BOLD}Welcome to true opsec brother, You made the right choice.${RESET}"
+            typewriter "${CYAN}To learn true opsec, paste ${BOLD}opsec help${RESET}"
+            printf "installed" > "$INSTALLFILE"
+        fi
+        ;;
     enable)
+        require_install
         print_banner
         if [ "$(get_state)" = "enabled" ]; then
             typewriter "${GREEN}${BOLD}its already enabled and you're protected king, the larp never ends${RESET}"
@@ -167,6 +220,7 @@ case "$1" in
         fi
         ;;
     disable)
+        require_install
         print_banner
         if [ "$(get_state)" = "disabled" ]; then
             typewriter "${RED}${BOLD}its already disabled and you're exposed dumbass${RESET}"
@@ -177,6 +231,7 @@ case "$1" in
         fi
         ;;
     status)
+        require_install
         print_banner
         if [ "$(get_state)" = "enabled" ]; then
             typewriter "${GREEN}${BOLD}opsec is enabled.${RESET} ${CYAN}you're protected king. =)${RESET}"
@@ -190,8 +245,9 @@ case "$1" in
     help|--help|-h)
         printf "${BOLD}opsec${RESET} - become sinister\n\n"
         printf "${BOLD}Usage:${RESET}\n"
-        printf "  opsec enable    Enable opsec mode\n"
-        printf "  opsec disable   Disable opsec mode\n"
+        printf "  opsec install   Install opsec\n"
+        printf "  opsec enable    Enable opsec\n"
+        printf "  opsec disable   Disable opsec\n"
         printf "  opsec status    Check your opsec status\n"
         printf "  opsec version   Show version\n"
         printf "  opsec help      Show this help\n"
@@ -199,7 +255,11 @@ case "$1" in
         ;;
     "")
         print_banner
-        typewriter "Run ${BOLD}opsec enable${RESET} to get started."
+        if [ -f "$INSTALLFILE" ]; then
+            typewriter "Run ${BOLD}opsec enable${RESET} to get started."
+        else
+            typewriter "Run ${BOLD}opsec install${RESET} to get started."
+        fi
         ;;
     *)
         printf "${RED}unknown command:${RESET} %s\n" "$1"

@@ -1,5 +1,5 @@
 #!/bin/sh
-# opsec uninstaller v1.2.2
+# opsec uninstaller v1.2.5
 
 set -e
 
