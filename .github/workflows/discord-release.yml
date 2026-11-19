@@ -1,0 +1,24 @@
+name: Discord release notes
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post release notes to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          REPO: ${{ github.event.repository.name }}
+          TAG: ${{ github.event.release.tag_name }}
+          NAME: ${{ github.event.release.name }}
+          URL: ${{ github.event.release.html_url }}
+          BODY: ${{ github.event.release.body }}
+        run: |
+          [ -n "$DISCORD_WEBHOOK" ] || { echo "DISCORD_WEBHOOK secret not set"; exit 0; }
+          # Discord embed descriptions max out at 4096 chars
+          jq -n --arg t "${NAME:-$REPO $TAG}" --arg u "$URL" --arg d "${BODY:0:4000}" --arg r "$REPO" \
+            '{username:"Releases",embeds:[{title:$t,url:$u,description:(if $d=="" then "No release notes." else $d end),color:15158332,footer:{text:$r}}]}' \
+            | curl -fsS -H 'Content-Type: application/json' -d @- "$DISCORD_WEBHOOK"
