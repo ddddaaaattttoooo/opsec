@@ -2,6 +2,8 @@
 **This is all a parody. Nothing is being installed — it's just text being pasted in your shell.**
 **Want to give me ideas for my next project? Add me on Discord! bl0odsipper**
 
+[![Join the Discord](https://img.shields.io/badge/Join-on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/gr4uwUyYTG)
+
 # Opsec (sudo apt install opsec / sudo pacman -S opsec)
 
 become sinister.
